@@ -369,7 +369,7 @@ export default function Home() {
             {/* Meta */}
             {report && (
               <div className="mt-8 pt-4 border-t border-neutral-100 text-xs text-neutral-400 flex justify-between">
-                <span>Omnyra-Gate · {format}</span>
+                <span>OmnyraCloud · {format}</span>
                 <span>{report.processing_time_ms}ms</span>
               </div>
             )}
