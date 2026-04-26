@@ -1,0 +1,47 @@
+{
+  "id": "benign_qpcr_01",
+  "title": "qPCR quantification of GAPDH and target gene expression",
+  "description": "Reverse transcription followed by quantitative PCR to measure relative gene expression of a target gene normalized to GAPDH housekeeping control in HEK293T cells.",
+  "source_format": "generic_json",
+  "operations": [
+    {
+      "id": "op_01_rna_extract",
+      "type": "purification",
+      "inputs": [
+        {"name": "HEK293T cell pellet", "category": "cell_line", "source_organism": "Homo sapiens"},
+        {"name": "TRIzol reagent", "category": "reagent"}
+      ],
+      "notes": "total_RNA_extraction"
+    },
+    {
+      "id": "op_02_rt",
+      "type": "other",
+      "inputs": [
+        {"name": "total RNA", "category": "rna"},
+        {"name": "SuperScript IV reverse transcriptase", "category": "enzyme"},
+        {"name": "random hexamer primers", "category": "primer"},
+        {"name": "dNTPs", "category": "reagent"}
+      ],
+      "parameters": {"temperature_C": 50, "duration_min": 10},
+      "notes": "reverse_transcription"
+    },
+    {
+      "id": "op_03_qpcr",
+      "type": "pcr",
+      "inputs": [
+        {"name": "cDNA", "category": "dna"},
+        {"name": "GAPDH target sequence", "category": "dna", "sequence": "ATGGGGAAGGTGAAGGTCGGAGTCAACGGATTTGGTCGTATTGGGCGCCTGGTCACCAGGGCTGCTTTTAACTCTGGTAAAGTGGATATTGTTGCCATCAATGACCCCTTCATTGACCTCAACTACATGGTTTACATGTTCCAATATGATTCCACCCATGGCAAATTCCATGGCACCGTCAAGGCTGAGAACGGGAAGCTTGTCATCAATGGAAATCCCATCACCATCTTCCAGGAGCGAGATCCCTCCAAAATCAAGTGGGGCGATGCTGGCGCTGAGTACGTCGTGGAGTCCACTGGCGTCTTCACCACCATGGAGAAGGCTGGGGCTCATTTGCAGGGGGGAGCCAAAAGGGTCATCATCTCTGCCCCCTCTGCTGATGCCCCCATGTTCGTCATGGGTGTGAACCATGAGAAGTATGACAACAGCCTCAAGATCATCAGCAATGCCTCCTGCACCACCAACTGCTTAGCACCCCTGGCCAAGGTCATCCATGACAACTTTGGTATCGTGGAAGGACTCATGACCACAGTCCATGCCATCACTGCCACCCAGAAGACTGTGGATGGCCCCTCCGGGAAACTGTGGCGTGATGGCCGCGGGGCTCTCCAGAACATCATCCCTGCCTCTACTGGCGCTGCCAAGGCTGTGGGCAAGGTCATCCCTGAGCTGAACGGGAAGCTCACTGGCATGGCCTTCCGTGTCCCCACTGCCAACGTGTCAGTGGTGGACCTGACCTGCCGTCTAGAAAAACCTGCCAAATATGATGACATCAAGAAGGTGGTGAAGCAGGCGTCGGAGGGCCCCCTCAAGGGCATCCTGGGCTACACTGAGCACCAGGTGGTCTCCTCTGACTTCAACAGCGACACCCACTCCTCCACCTTTGACGCTGGGGCTGGCATTGCCCTCAACGACCACTTTGTCAAGCTCATTTCCTGGTATGACAACGAATTTGGCTACAGCAACAGGGTGGTGGACCTCATGGCCCACATGGCCTCCAAGGAGTAAGACCCCTGGACCACCAGCCCCAGCAAGAGCACAAGAGGAAGAGAGAGACCCTCACTGCTGGGGAGTCCCTGCCACACTCAGTCCCCCACCACACTGAATCTCCCCTCCTCACAGTTGCCATGTAGACCCCTTGAAGAGGGGAGGGGCCTAGGGAGCCGCACCTTGTCATGTACCACCATGTAGTTGAGGTCAATGAAGGGGTCGTTGATGGCAACAATCTCCACTTTGCCACTGCAAATGGCAGCCCTGGTGACCAGGTGGTGCAGTGG"},
+        {"name": "qPCR primer mix", "category": "reagent"},
+        {"name": "SYBR Green master mix", "category": "reagent"}
+      ],
+      "parameters": {"cycles": 40, "annealing_temp_C": 60}
+    },
+    {
+      "id": "op_04_analyze",
+      "type": "measurement",
+      "inputs": [{"name": "qPCR product", "category": "data"}],
+      "parameters": {"method": "delta_delta_Ct"}
+    }
+  ],
+  "metadata": {"biosafety_level": "BSL-1", "ground_truth_risk": 0}
+}

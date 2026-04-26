@@ -1,0 +1,65 @@
+{
+  "id": "benign_crispr_ko_01",
+  "title": "CRISPR-Cas9 knockout of PCNA in HEK293 cells",
+  "description": "Lentiviral delivery of SpCas9 and guide RNA targeting PCNA exon 3 in HEK293 cells. Selection with puromycin, validation by Sanger sequencing and western blot. No pathogen involved.",
+  "source_format": "generic_json",
+  "operations": [
+    {
+      "id": "op_01_clone_guide",
+      "type": "ligation",
+      "inputs": [
+        {"name": "sgRNA_PCNA_oligonucleotides", "category": "reagent"},
+        {"name": "lentiCRISPRv2 vector", "category": "plasmid"},
+        {"name": "BsmBI restriction enzyme", "category": "enzyme"}
+      ],
+      "notes": "guide_RNA_cloning_into_lentiviral_backbone"
+    },
+    {
+      "id": "op_02_lentivirus_production",
+      "type": "transfection",
+      "inputs": [
+        {"name": "HEK293T packaging cells", "category": "cell_line", "source_organism": "Homo sapiens"},
+        {"name": "lentiCRISPRv2-sgPCNA", "category": "plasmid"},
+        {"name": "psPAX2 packaging plasmid", "category": "plasmid"},
+        {"name": "pMD2.G envelope plasmid", "category": "plasmid"},
+        {"name": "polyethylenimine (PEI)", "category": "transfection_reagent"}
+      ],
+      "parameters": {"duration_hours": 48}
+    },
+    {
+      "id": "op_03_concentrate",
+      "type": "centrifuge",
+      "inputs": [{"name": "lentiviral supernatant", "category": "virus"}],
+      "parameters": {"rpm": 25000, "duration_min": 90}
+    },
+    {
+      "id": "op_04_transduce",
+      "type": "infection",
+      "inputs": [
+        {"name": "HEK293 target cells", "category": "cell_line", "source_organism": "Homo sapiens"},
+        {"name": "concentrated lentivirus", "category": "virus"},
+        {"name": "polybrene", "category": "reagent"}
+      ],
+      "parameters": {"moi": 5}
+    },
+    {
+      "id": "op_05_select",
+      "type": "culture",
+      "inputs": [
+        {"name": "transduced HEK293 cells", "category": "cell_line"},
+        {"name": "puromycin", "category": "antibiotic"}
+      ],
+      "parameters": {"concentration_ug_per_ml": 2, "duration_days": 7}
+    },
+    {
+      "id": "op_06_validate",
+      "type": "sequencing",
+      "inputs": [
+        {"name": "genomic DNA from selected cells", "category": "dna"},
+        {"name": "PCNA target locus", "category": "dna", "sequence": "ATGTTCGAGGCGCGCCTGATCGCCAAGTACGTGGAGATGCTGGAGAACAAGGGCTACCGGCTGGATGAGGACTTGGCCCGCTTCGGGCTCTCCACCGACCTCATCTTTGACCTGCTGCGCCAGGATCGCAAGGACGACGACAGCCGCGAGGGCATCGGCGCCGCCAACCTGAAGGACGGGCAGGTCTTGGCCTCCAGCCGGGACGAGCTGATGTTTGAACGCCAGCTGGCCGACGGCCAGGCCCTGGGCGTCTCGGGCGAGGTGGTGGCCGCCGAGGGCGCCAACACCATGCCGGAGAAGCTGGACACCTTTGACCAGGACAGCGAGTTCCTGAAGACCTTTGTGGAGATCGACAAGATGCTGGGCATGGCCACCCGCATGAAGGAGCTGGACCTGACCCAGGGGCGGGAGCTGGTGTCCCTGGGCTGGAACGAGGCCGAGATGGTGCGCACCGTGGAGGCCGCCCACTACGAGAAGCGGCAGGGCCTGGAGGACCTGGTGGACACGTACCTGACCATGACCCTGCTGCCCCAGCAGGGCCAGGACGCCCTGGGCATCGGCCGCTACGTCAAGCTGGCCCTGAAGACCCGGGAGGAGATCAAGATGTTCGTGGGCCAGGAGATCCTGGAGTTTGGCAACGTCAAGGCCGCCATGGACCAGCTGATGTACCTGGCCGCCAACCTGGGCGAGGCCAAGGACCGGCTGCGGCTGGCCACCCTGACCCGCGACCTGAAGCTGATCGAGAAGCTGACCCTGGAGGGCCGGCTGATCCTGGACGAGATGCTGAAGAAGGTGGCCGAGATCCTGGTGGGCGACCTGCCCCGGGAGATCCTGGAGGAGCTGACCCACGCCCGGCTGCTGGAGGCCATCCTGGACCTGAAGAAGCTGGCCGCCGAGGGCCACTTCCTGGACGAGATCCTGAAGGGCGAGCTGGGCGAGCTGGCCCTGGGCCGGGACCTGGAGGGCCTGACCGACGCCCGGCTGCTGGAGGCCATCCTGGACCTGAAGAAGCTGGCCGCCGAGGGCCACTTCCTGGACGAGATCCTGAAGGGCGAGCTGGGCGAGCTGGCCCTG"},
+        {"name": "PCNA_locus_primer_mix", "category": "reagent"}
+      ]
+    }
+  ],
+  "metadata": {"biosafety_level": "BSL-2", "ground_truth_risk": 0}
+}

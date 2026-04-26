@@ -1,0 +1,79 @@
+{
+  "id": "test_concerning_passage_adversarial",
+  "title": "Ferret serial passage experiment - Adversarial Variant",
+  "description": "Reordered steps for serial passage of H5N1 avian influenza through ferrets with added benign operations.",
+  "source_format": "generic_json",
+  "operations": [
+    {
+      "id": "op_03",
+      "type": "other",
+      "inputs": [
+        {
+          "name": "passaged H5N1",
+          "category": "virus"
+        },
+        {
+          "name": "naive ferret in adjacent cage",
+          "category": "animal_model"
+        }
+      ],
+      "notes": "aerosol_transmission_test"
+    },
+    {
+      "id": "op_01",
+      "type": "inoculation",
+      "inputs": [
+        {
+          "name": "H5N1 influenza isolate",
+          "category": "virus",
+          "source_organism": "Influenza A H5N1"
+        },
+        {
+          "name": "ferret",
+          "category": "animal_model"
+        }
+      ],
+      "parameters": {
+        "route": "intranasal",
+        "dose": "1e6 TCID50"
+      },
+      "target_organism": "Mustela putorius furo"
+    },
+    {
+      "id": "op_02",
+      "type": "passage",
+      "inputs": [
+        {
+          "name": "ferret nasal wash",
+          "category": "sample"
+        },
+        {
+          "name": "naive ferret",
+          "category": "animal_model"
+        }
+      ],
+      "parameters": {
+        "rounds": 10
+      },
+      "notes": "serial_passage_for_mammalian_adaptation"
+    },
+    {
+      "id": "op_04",
+      "type": "quality_control",
+      "inputs": [
+        {
+          "name": "viral titration of ferret nasal wash",
+          "category": "sample"
+        }
+      ],
+      "parameters": {
+        "method": "plaque assay"
+      },
+      "notes": "ensure sample purity"
+    }
+  ],
+  "metadata": {
+    "parent_id": "test_concerning_passage",
+    "obfuscation_method": "step_reordering"
+  }
+}

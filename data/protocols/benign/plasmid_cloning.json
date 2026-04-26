@@ -1,0 +1,60 @@
+{
+  "id": "benign_plasmid_cloning_01",
+  "title": "Plasmid cloning of GFP reporter construct",
+  "description": "Standard subcloning of a GFP reporter gene into pUC19 backbone using restriction enzyme digestion and T4 ligation, followed by transformation into DH5alpha E. coli.",
+  "source_format": "generic_json",
+  "operations": [
+    {
+      "id": "op_01_digest",
+      "type": "other",
+      "inputs": [
+        {"name": "pUC19", "category": "plasmid"},
+        {"name": "GFP_PCR_product", "category": "dna_fragment"},
+        {"name": "EcoRI", "category": "enzyme"},
+        {"name": "HindIII", "category": "enzyme"},
+        {"name": "CutSmart buffer", "category": "buffer"}
+      ],
+      "parameters": {"temperature_C": 37, "duration_min": 60},
+      "notes": "restriction_digest"
+    },
+    {
+      "id": "op_02_gel",
+      "type": "purification",
+      "inputs": [
+        {"name": "restriction digest product", "category": "dna_mixture"}
+      ],
+      "parameters": {"gel_percent": 1.0},
+      "notes": "gel_extraction"
+    },
+    {
+      "id": "op_03_ligation",
+      "type": "ligation",
+      "inputs": [
+        {"name": "pUC19 linearized", "category": "plasmid"},
+        {"name": "GFP insert", "category": "dna_fragment"},
+        {"name": "T4 DNA ligase", "category": "enzyme"},
+        {"name": "T4 ligation buffer", "category": "buffer"}
+      ],
+      "parameters": {"temperature_C": 16, "duration_hours": 16}
+    },
+    {
+      "id": "op_04_transform",
+      "type": "transformation",
+      "inputs": [
+        {"name": "ligation product", "category": "dna"},
+        {"name": "DH5alpha competent cells", "category": "bacteria", "source_organism": "Escherichia coli K-12"}
+      ],
+      "parameters": {"heat_shock_temp_C": 42, "heat_shock_sec": 30}
+    },
+    {
+      "id": "op_05_plate",
+      "type": "culture",
+      "inputs": [
+        {"name": "transformed cells", "category": "bacteria"},
+        {"name": "LB agar + ampicillin", "category": "media"}
+      ],
+      "parameters": {"temperature_C": 37, "duration_hours": 16}
+    }
+  ],
+  "metadata": {"biosafety_level": "BSL-1", "ground_truth_risk": 0}
+}

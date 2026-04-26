@@ -1,0 +1,127 @@
+{
+  "id": "wimmer_poliovirus_2002",
+  "title": "De novo chemical synthesis of poliovirus type 1 (Cello et al. 2002)",
+  "description": "Chemical synthesis and recovery of infectious poliovirus type 1 Mahoney from the published genome sequence. Based on Cello, Paul & Wimmer 2002 Science 297(5583):1016-8. Select Agent synthesis protocol.",
+  "source_format": "generic_json",
+  "operations": [
+    {
+      "id": "op_01_oligosynth",
+      "type": "synthesis",
+      "notes": "chemical_synthesis_of_overlapping_oligonucleotides_covering_poliovirus_genome",
+      "inputs": [
+        {
+          "name": "synthetic oligonucleotides (poliovirus type 1 Mahoney genome)",
+          "category": "oligonucleotide",
+          "source_organism": "Poliovirus type 1 Mahoney",
+          "sequence": "ATGGCAAGTTGGCTGCGTGCTACCCCAAGGCAGAACTCGTCGACATTGCTGCACCGTGCATGCGTATGCGCATGATTAAGTCGGCTGAAGAACAGGCGTTGATTCGGCACGGCGCGCAAGTCGCAGATATCGGTGGTGCGGCTGTCGTGGAGGCTCTCCGCGAACAGGTGCCGGAATACGAGGTCGCGCTCCATGCAACCCAGGCTATGGTGCGGGAGATTGCAAAACGGTTTCCCGATGCAGAGTTGATGGACACGTGGACCTGGTTTCAAAGCGGCCTGAACACGGACGGGGCACACAACCCGGTCACGAGCCGTCGTGTGGGTAAAGGTGAGATTCTCTCGCTCAACTGTTTTCCTATGATCGCAGGTTATTACACGGCGCTGGAACGGACGCTGTTCTTGGACCACTGTCCAGATGAGTATTTGCGGCTGTGGCAGGCGAATGTGGAAGTGCACGAAGCTGGCTTGCAACTCGTCCGGCCGGGCATGCGGTGTAGCGACATCGCCCGTGAGCTGAATGAAATCTTTCTCCGCCATGATCTGTTGCAATATCGGACCTTTGGTTACGGGCATAGCTTTGGGACCCTCTCCCATTACTATGGCCGGGAAGCTGGTCTCGAACTCCGTGAAGATATCGACACCGTCTTGGAACCTGGCATGGTCGTCTCCATCGAACCGATGATCATGTTGCCAGAAGGGCGGCCAGGCGCTGGGGGTTATCGGGAACACGATATCTTGATTGTGAACGATAGCGGGGCAGAGAACATCACCAAGTTCCCCTACGGTCCCGAGCATAACATCATCCGTAAGTGATGTGTTTTTCATTTTTCACGGATGAACCCACAATGAGCAAGTCCGTGTTTGTCGGCGAGCTGACCTGGAAGGAATATGAGGCGCGTGTCGCCGCCGGCGACTGTGTCTTGATGCTGCCTGTGGGTGCCCTCGAAC"
+        }
+      ],
+      "parameters": {
+        "oligo_length_nt": 69,
+        "total_oligos": 7500,
+        "coverage": "complete_7440_nt_genome",
+        "genome_accession": "NC_002058.3"
+      }
+    },
+    {
+      "id": "op_02_assembly",
+      "type": "assembly",
+      "notes": "RT-PCR_assembly_of_oligonucleotides_into_seven_genome_segments",
+      "inputs": [
+        {"name": "oligonucleotide pool", "category": "oligonucleotide"},
+        {"name": "Taq DNA polymerase", "category": "enzyme"},
+        {"name": "dNTPs", "category": "reagent"}
+      ],
+      "parameters": {
+        "method": "stepwise_PCR_assembly",
+        "segments": 7,
+        "segment_size_bp": 1062
+      }
+    },
+    {
+      "id": "op_03_cloning",
+      "type": "ligation",
+      "notes": "ligation_of_genome_segments_into_full_length_cDNA_in_pACYC177",
+      "inputs": [
+        {
+          "name": "full-length poliovirus cDNA clone",
+          "category": "plasmid",
+          "source_organism": "Poliovirus type 1 Mahoney"
+        },
+        {"name": "pACYC177 vector", "category": "plasmid"},
+        {"name": "T4 DNA ligase", "category": "enzyme"},
+        {"name": "restriction enzymes (EcoRI, SacI)", "category": "enzyme"}
+      ],
+      "parameters": {
+        "insert_size_bp": 7440,
+        "promoter": "T7_upstream_of_5UTR",
+        "method": "restriction_ligation"
+      }
+    },
+    {
+      "id": "op_04_linearization",
+      "type": "other",
+      "notes": "restriction_digest_to_linearize_plasmid_at_3UTR_for_run_off_transcription",
+      "inputs": [
+        {"name": "full-length cDNA plasmid", "category": "plasmid"},
+        {"name": "EcoRI restriction enzyme", "category": "enzyme"}
+      ],
+      "parameters": {"digest_site": "3_prime_UTR_EcoRI"}
+    },
+    {
+      "id": "op_05_transcription",
+      "type": "synthesis",
+      "notes": "in_vitro_transcription_to_produce_poliovirus_genomic_RNA",
+      "inputs": [
+        {"name": "linearized cDNA template", "category": "dna"},
+        {"name": "T7 RNA polymerase", "category": "enzyme"},
+        {
+          "name": "recovered virus genomic RNA",
+          "category": "rna",
+          "source_organism": "Poliovirus type 1 Mahoney",
+          "sequence": "TTAAAACAGCTCTGGGGTTGTACCCACCCCAGAGGCCCACGTGGCGGCTAGTACTCCGGTATTGCGGTACCCTTGTACGCCTGTTTTATACTCCCTTCCCGTAACTTAGACGCACAAAACCAAGTTCAATAGAAGGGGGTACAAACCAGTACCACCACGAACAAGCACTTCTGTTTCCCCGGTGATGTCGTTAGGGGCGGACATCCCGCGGTCACGATGGGTACCATGATGTAACCCCGCCCGCGCCACTCGCGGTTCGCGTCGACGGTGGGACGAGCCCACGCCACGTTGGGGTCTTTCCGATCGAGCGATCAGCGTCAGGGTCCCGGAGGCCATTGATACATGCGTACCTGGCAGGTCTCGTGTACTGGGAACGGCCGGCGAACCCCGGTTATGCGGTGAACGAAGGGATCGGCAGCCGTCGGCGTAGCTCCCAACGGCTGATCATGATGATGAGCACTGTCGGATACAAGGACATCCTCGGCGAGGATCATGAAGGCAATGTGAACGATCTGGACATGCACAAGGACATTCCAGAGGACACGTCCAATCTGGTGGACGGCTATATGGCAGGCGATGCACGTGACTTGTATGAAAACGAGGACGGATACGACGTGAAGAACAGCGCCAGCCATGGAGACGAAGTCAAGTCCAACGAAGGAGGGGTGTTTGTGTTCCCTGACTTCCCCAGCCGACCTGGCAGGCTGTACAAGGTGTGTGGATGGCTGACGTCTCCGGATGATGAAGATGACGACGACGATCCGACCCTCCCAGAGGCAGATGAAGATGGCTACGATGACAACAACCGACGGAAGGACGTCGAGGACGAGACAGAGAAGGGCGATGGCGACAAGGGCAAAGTCACCCTGGTCACCGCCATTGTCAAAGCCGGCGAGAAGGCCACCAAGGAACGGGTCGAGGATCTGGAGCGCTACATGAGCGATTTCCCCAAGGACGCCCTGGGTACAGGCGGCGACCATCTCCTGGAGGTGGCCCAGCAGGATGGCTACAAAGAGGAGTACAAGAAGGCCTATGAAAATGCCAGGAAGGAGATGGATGAACCTGCCAAATGGGGATACATCCTGGAAGATGTGAGCCACGAA"
+        }
+      ],
+      "parameters": {
+        "promoter": "T7",
+        "transcript_length_nt": 7440,
+        "polya_tail": true
+      }
+    },
+    {
+      "id": "op_06_transfection",
+      "type": "transfection",
+      "notes": "HeLa_cell_transfection_to_initiate_viral_translation_and_replication",
+      "inputs": [
+        {"name": "poliovirus genomic RNA", "category": "rna"},
+        {"name": "HeLa S10 cell extract", "category": "cell_line", "source_organism": "Homo sapiens"},
+        {"name": "lipofection reagent", "category": "reagent"}
+      ],
+      "parameters": {
+        "cell_line": "HeLa_S10",
+        "incubation_hours": 48
+      }
+    },
+    {
+      "id": "op_07_virus_recovery",
+      "type": "infection",
+      "notes": "propagation_and_recovery_of_de_novo_synthesized_infectious_poliovirus",
+      "inputs": [
+        {"name": "HeLa cell monolayer", "category": "cell_line", "source_organism": "Homo sapiens"},
+        {"name": "poliovirus type 1 Mahoney (de novo synthesized)", "category": "virus", "source_organism": "Poliovirus type 1 Mahoney"}
+      ],
+      "parameters": {
+        "agent": "poliovirus_type_1_Mahoney",
+        "BSL": 2,
+        "select_agent": true,
+        "MOI": 0.1
+      },
+      "target_organism": "Homo sapiens"
+    }
+  ],
+  "metadata": {
+    "reference": "Cello J, Paul AV, Wimmer E. Chemical synthesis of poliovirus cDNA: generation of infectious virus in the absence of natural template. Science. 2002;297(5583):1016-8.",
+    "genome_accession": "NC_002058.3",
+    "classification": "Select Agent (CDC Schedule 1) / DURC"
+  }
+}

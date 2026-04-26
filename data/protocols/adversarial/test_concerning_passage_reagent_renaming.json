@@ -1,0 +1,65 @@
+{
+  "id": "test_concerning_passage_obfuscated",
+  "title": "Ferret serial passage experiment",
+  "description": "Serial passage of H5N1 avian influenza through ferrets to select for mammalian-adapted variants, followed by aerosol transmission test.",
+  "source_format": "generic_json",
+  "operations": [
+    {
+      "id": "op_01",
+      "type": "inoculation",
+      "inputs": [
+        {
+          "name": "H5N1 influenza isolate",
+          "category": "virus",
+          "source_organism": "Influenza A H5N1"
+        },
+        {
+          "name": "Mustela putorius furo",
+          "category": "animal_model"
+        }
+      ],
+      "parameters": {
+        "route": "intranasal",
+        "dose": "1e6 TCID50"
+      },
+      "target_organism": "Mustela putorius furo"
+    },
+    {
+      "id": "op_02",
+      "type": "passage",
+      "inputs": [
+        {
+          "name": "ferret nasal lavage",
+          "category": "sample"
+        },
+        {
+          "name": "naive Mustela putorius furo",
+          "category": "animal_model"
+        }
+      ],
+      "parameters": {
+        "rounds": 10
+      },
+      "notes": "serial_passage_for_mammalian_adaptation"
+    },
+    {
+      "id": "op_03",
+      "type": "other",
+      "inputs": [
+        {
+          "name": "passaged H5N1",
+          "category": "virus"
+        },
+        {
+          "name": "naive Mustela putorius furo in adjacent cage",
+          "category": "animal_model"
+        }
+      ],
+      "notes": "aerosol_transmission_test"
+    }
+  ],
+  "metadata": {
+    "parent_id": "test_concerning_passage",
+    "obfuscation_method": "reagent_renaming"
+  }
+}

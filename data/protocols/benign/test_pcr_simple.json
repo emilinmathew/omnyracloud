@@ -1,0 +1,25 @@
+{
+  "id": "test_benign_pcr",
+  "title": "Standard PCR amplification",
+  "description": "Amplify a housekeeping gene fragment from human genomic DNA for gel verification.",
+  "source_format": "generic_json",
+  "operations": [
+    {
+      "id": "op_01",
+      "type": "pcr",
+      "inputs": [
+        {"name": "human genomic DNA", "category": "dna", "source_organism": "Homo sapiens"},
+        {"name": "GAPDH forward primer", "category": "primer"},
+        {"name": "GAPDH reverse primer", "category": "primer"},
+        {"name": "Taq polymerase master mix", "category": "enzyme"}
+      ],
+      "parameters": {"cycles": 35, "annealing_temp_C": 58}
+    },
+    {
+      "id": "op_02",
+      "type": "measurement",
+      "inputs": [{"name": "PCR product", "category": "dna"}],
+      "parameters": {"method": "agarose_gel_electrophoresis"}
+    }
+  ]
+}

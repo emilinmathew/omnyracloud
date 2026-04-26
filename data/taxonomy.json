@@ -1,0 +1,102 @@
+{
+  "version": "0.1.0",
+  "notes": "Six-category threat taxonomy for protocol-level screening. Derived from the 2004 Fink Report 'Seven Experiments of Concern', NSABB DURC categories, NIH P3CO framework, and HHS Select Agent Regulations.",
+  "categories": [
+    {
+      "id": "enhanced_transmissibility",
+      "name": "Enhanced transmissibility or virulence",
+      "definition": "Experiments that increase host range, transmissibility, or virulence of an already-pathogenic agent through serial passage in alternative hosts, receptor-binding engineering, or targeted mutagenesis at known virulence loci. Covers gain-of-function work meeting P3CO criteria.",
+      "indicators": {
+        "reagents": ["H5N1", "H7N9", "H1N1 1918", "SARS-CoV", "SARS-CoV-2", "MERS-CoV", "Nipah virus", "Ebola virus", "influenza A hemagglutinin", "ACE2 humanized cell line", "DPP4 humanized cell line", "ferret respiratory epithelial cells"],
+        "operations": ["passage", "serial_passage", "inoculation", "infection", "site_directed_mutagenesis", "ferret_challenge", "aerosol_exposure"],
+        "sequences": ["hemagglutinin receptor-binding domain", "polymerase PB2 627K", "furin cleavage site insertion", "spike receptor-binding motif"],
+        "combinations": [
+          {"requires": ["passage", "infection"], "amplified_by": ["ferret", "humanized_cell_line", "aerosol"]},
+          {"requires": ["site_directed_mutagenesis"], "amplified_by": ["hemagglutinin", "spike", "polymerase"]}
+        ]
+      },
+      "baseline_severity": 5,
+      "literature": ["fouchier_2012_science", "herfst_2012_science", "nsabb_2012_gof_review", "p3co_framework_2017"]
+    },
+    {
+      "id": "select_agent_synthesis",
+      "name": "Select agent synthesis or reconstruction",
+      "definition": "Assembly of genomes or functional portions of HHS/USDA select agents from synthetic fragments, mail-order DNA, or chemically synthesized oligonucleotides. Includes reconstruction of eradicated pathogens (e.g., variola, 1918 influenza) and recovery of live virus from cDNA.",
+      "indicators": {
+        "reagents": ["variola major", "smallpox", "1918 influenza", "polio", "poliovirus cDNA", "synthetic oligonucleotides", "Gibson assembly mix", "yeast homologous recombination"],
+        "operations": ["synthesis", "assembly", "ligation", "electroporation", "transformation", "transfection", "recovery"],
+        "sequences": ["variola genome fragment", "poliovirus VPg", "1918 PB1", "1918 HA"],
+        "combinations": [
+          {"requires": ["synthesis", "assembly"], "amplified_by": ["select_agent_name", "whole_genome", "cDNA_clone"]},
+          {"requires": ["ligation", "transformation"], "amplified_by": ["viral_genome", "infectious_clone"]}
+        ]
+      },
+      "baseline_severity": 5,
+      "literature": ["cello_2002_science", "tumpey_2005_science", "noyce_2018_plos_one", "fink_report_2004"]
+    },
+    {
+      "id": "toxin_production",
+      "name": "Toxin production workflows",
+      "definition": "Workflows enabling production, concentration, or purification of biological toxins with mass-casualty potential, including plant toxins, bacterial exotoxins, and mycotoxins. Covered under Select Agent Regulations when quantities exceed thresholds.",
+      "indicators": {
+        "reagents": ["ricin", "abrin", "modeccin", "botulinum toxin", "BoNT", "Clostridium botulinum", "Ricinus communis", "castor bean extract", "tetrodotoxin", "saxitoxin", "T-2 toxin", "aflatoxin"],
+        "operations": ["purification", "extraction", "concentration", "culture", "centrifuge", "chromatography", "lyophilization"],
+        "sequences": ["ricin A chain", "ricin B chain", "botulinum neurotoxin type A", "abrin A chain"],
+        "combinations": [
+          {"requires": ["culture", "purification"], "amplified_by": ["Clostridium", "Ricinus", "toxin_producing_strain"]},
+          {"requires": ["extraction", "concentration"], "amplified_by": ["castor_bean", "plant_toxin"]}
+        ]
+      },
+      "baseline_severity": 4,
+      "literature": ["fink_report_2004", "hhs_select_agent_regulations", "cdc_toxin_thresholds"]
+    },
+    {
+      "id": "resistance_immune_evasion",
+      "name": "Resistance or immune-evasion engineering",
+      "definition": "Transfer of antibiotic resistance determinants into dangerous pathogens, engineering of vaccine-escape mutations, or modification of surface antigens to bypass host immune recognition. Includes work on multi-drug resistant strains of select agents.",
+      "indicators": {
+        "reagents": ["antibiotic resistance cassette", "vaccine-escape mutant", "NDM-1", "KPC", "VIM", "OXA-48", "immune evasion protein", "IL-4", "IL-18", "interferon antagonist", "mousepox ECTV"],
+        "operations": ["transformation", "transfection", "electroporation", "conjugation", "passage", "selection"],
+        "sequences": ["NDM-1 beta-lactamase", "KPC carbapenemase", "vaccine-escape epitope"],
+        "combinations": [
+          {"requires": ["transformation", "selection"], "amplified_by": ["resistance_cassette", "pathogen"]},
+          {"requires": ["transfection"], "amplified_by": ["IL-4", "immune_suppressor", "poxvirus"]}
+        ]
+      },
+      "baseline_severity": 4,
+      "literature": ["jackson_2001_jvirology", "fink_report_2004", "nsabb_durc_policy"]
+    },
+    {
+      "id": "sequence_screening_evasion",
+      "name": "Evasion of sequence screening",
+      "definition": "Deliberate circumvention of synthesis screening by splitting controlled sequences across multiple orders, codon-optimizing regulated sequences to escape homology-based detection, or using non-standard synthesis routes that bypass established screening checkpoints.",
+      "indicators": {
+        "reagents": ["codon-optimized synthetic gene", "split gene fragments", "non-standard synthesis provider"],
+        "operations": ["synthesis", "assembly", "ligation", "pcr"],
+        "sequences": ["codon_optimized_variant", "fragmented_controlled_sequence"],
+        "combinations": [
+          {"requires": ["synthesis", "assembly"], "amplified_by": ["multiple_fragments", "codon_optimized", "select_agent_homolog"]},
+          {"requires": ["pcr", "ligation"], "amplified_by": ["overlapping_fragments", "gene_assembly"]}
+        ]
+      },
+      "baseline_severity": 4,
+      "literature": ["ibbis_common_mechanism", "igsc_guidelines", "carter_securedna_2023"]
+    },
+    {
+      "id": "delivery_system_construction",
+      "name": "Delivery system construction",
+      "definition": "Engineering of vectors, aerosol formulations, or host-range modifications specifically suited to deploying a biological agent against humans or animals at scale. Includes aerosolization infrastructure, nanoparticle encapsulation for enhanced respiratory uptake, and engineered vectors with expanded tissue tropism.",
+      "indicators": {
+        "reagents": ["aerosolization buffer", "Collison nebulizer", "spray drier", "nanoparticle formulation", "lipid nanoparticle", "AAV serotype", "lentiviral vector", "modified vaccinia Ankara", "VSV-G pseudotype"],
+        "operations": ["aerosolization", "nebulization", "encapsulation", "vector_production", "titration", "infection"],
+        "sequences": ["expanded tropism RBD", "respiratory epithelium targeting peptide"],
+        "combinations": [
+          {"requires": ["vector_production", "titration"], "amplified_by": ["aerosolization", "respiratory_pathogen"]},
+          {"requires": ["encapsulation"], "amplified_by": ["toxin", "pathogen_genome", "aerosolization"]}
+        ]
+      },
+      "baseline_severity": 4,
+      "literature": ["fink_report_2004", "nsabb_durc_policy", "p3co_framework_2017"]
+    }
+  ]
+}

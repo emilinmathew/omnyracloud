@@ -1,0 +1,6 @@
+---
+title: "Cello, Paul, Wimmer 2002: Chemical synthesis of poliovirus cDNA"
+source: "Science 297(5583), 2002"
+---
+
+Cello, Paul, and Wimmer demonstrated the synthesis of infectious poliovirus entirely from mail-order DNA oligonucleotides, without any biological template, using the published genome sequence. The protocol involved: (1) ordering synthetic oligonucleotides corresponding to the 7,741-nucleotide poliovirus type 1 (Mahoney strain) positive-strand RNA genome, (2) assembling the oligonucleotides by PCR-based assembly into overlapping segments, (3) ligating the segments into a full-length cDNA clone, (4) in vitro transcription to produce RNA, (5) transfection into HeLa cells, and (6) recovery of infectious virus confirmed by cytopathic effect. The critical finding was that a pathogen could be reconstructed from publicly available sequence information and commercially synthesized DNA without biological starting material. This paper is widely credited with catalyzing the modern synthesis screening infrastructure (IGSC, Common Mechanism, SecureDNA) and established that sequence databases confer dual-use risk. The poliovirus genome is now a controlled sequence under IGSC guidelines.

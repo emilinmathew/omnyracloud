@@ -1,0 +1,60 @@
+{
+  "refs": {
+    "sample_tube": {"new": "micro-1.5", "discard": false},
+    "lysis_buffer": {"new": "micro-1.5"},
+    "wash_buffer": {"new": "micro-1.5"},
+    "elution_buffer": {"new": "micro-1.5"},
+    "eluate": {"new": "micro-1.5", "discard": false}
+  },
+  "instructions": [
+    {
+      "op": "provision",
+      "resourceId": "rs16pce2ue82dy",
+      "to": [{"well": "lysis_buffer/0", "volume": "500:microliter"}]
+    },
+    {
+      "op": "transfer",
+      "from": "sample_tube/0",
+      "to": "lysis_buffer/0",
+      "volume": "100:microliter",
+      "mix_after": {"volume": "200:microliter", "repetitions": 10}
+    },
+    {
+      "op": "incubate",
+      "object": "lysis_buffer/0",
+      "where": "warm_37",
+      "duration": "600:second"
+    },
+    {
+      "op": "spin",
+      "object": "lysis_buffer/0",
+      "speed": "4000:rpm",
+      "duration": "300:second"
+    },
+    {
+      "op": "transfer",
+      "from": "lysis_buffer/0",
+      "to": "wash_buffer/0",
+      "volume": "400:microliter"
+    },
+    {
+      "op": "spin",
+      "object": "wash_buffer/0",
+      "speed": "8000:rpm",
+      "duration": "60:second"
+    },
+    {
+      "op": "transfer",
+      "from": "elution_buffer/0",
+      "to": "eluate/0",
+      "volume": "50:microliter"
+    },
+    {
+      "op": "absorbance",
+      "object": "eluate/0",
+      "wavelength": "260:nanometer"
+    }
+  ],
+  "name": "dna_extraction_autoprotocol_benign",
+  "description": "Standard genomic DNA extraction from tissue sample via lysis, centrifugation, and column wash. Used for downstream genotyping assays."
+}

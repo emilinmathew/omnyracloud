@@ -1,0 +1,6 @@
+---
+title: "NSABB and NIH DURC Policy Framework"
+source: "NIH Office of Science Policy, NSABB; 2012 DURC Policy and 2017 P3CO Framework"
+---
+
+The NIH DURC Policy (2012) identifies 15 select agents and toxins and seven categories of experiments of concern (drawn from the Fink Report) that trigger mandatory DURC review. Research is classified as DURC if it is reasonably anticipated to create, transfer, or use enhanced potential pandemic pathogens (ePPP) or other select agents in ways that meet any of the seven categories. The 2017 P3CO Framework (Potential Pandemic Pathogen Care and Oversight) established additional requirements for gain-of-function research likely to create enhanced potential pandemic pathogens, requiring prospective review by the HHS P3CO Review Board before NIH funding. Key review criteria include: whether the pathogen is likely to be more transmissible in humans, whether it would be more virulent, and whether it could significantly affect the immune response. The framework applies specifically to work on influenza, MERS-CoV, and SARS-CoV. Protocols involving passage experiments, receptor engineering, or reverse genetics on potential pandemic pathogens (PPPs) are subject to mandatory review under both the DURC policy and the P3CO framework.

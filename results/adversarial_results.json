@@ -1,0 +1,31 @@
+{
+  "summary": {
+    "total_variants": 0,
+    "still_flagged": 0,
+    "successful_evasions": 0,
+    "evasion_rate": 0,
+    "robustness_score": 1
+  },
+  "parent_scores": {},
+  "method_stats": {
+    "reagent_renaming": {
+      "flagged": 0,
+      "total": 0,
+      "mean_drop": 0,
+      "evasion_rate": 0
+    },
+    "step_reordering": {
+      "flagged": 0,
+      "total": 0,
+      "mean_drop": 0,
+      "evasion_rate": 0
+    },
+    "benign_framing": {
+      "flagged": 0,
+      "total": 0,
+      "mean_drop": 0,
+      "evasion_rate": 0
+    }
+  },
+  "variants": []
+}

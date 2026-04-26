@@ -1,0 +1,6 @@
+---
+title: "Jackson et al. 2001: Mousepox IL-4 insertion causes lethal infection"
+source: "Journal of Virology 75(3), 2001"
+---
+
+Jackson et al. inserted the murine interleukin-4 (IL-4) gene into the ectromelia (mousepox) virus genome to test whether it would enhance immunity in a contraceptive vaccine project. Instead, the recombinant virus proved uniformly lethal even in vaccinated and naturally resistant mouse strains, and suppressed both cellular and humoral immune responses. The protocol involved: (1) cloning the IL-4 gene into a vaccinia shuttle vector, (2) transfection of ectromelia-infected cells to produce recombinant virus by homologous recombination, (3) plaque purification of recombinant virus, (4) challenge experiments in mice with varying immune backgrounds. This paper is the canonical example of an immune-evasion experiment producing an unexpectedly dangerous outcome from an individually unremarkable step (IL-4 cytokine insertion). The concern is not the IL-4 gene itself but its insertion into a poxvirus — a composition-level risk. This paper is frequently cited in discussions of unintended consequences in gain-of-function research and maps to the resistance_immune_evasion taxonomy category.

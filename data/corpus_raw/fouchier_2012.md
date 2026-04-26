@@ -1,0 +1,6 @@
+---
+title: "Fouchier et al. 2012: Airborne transmission of influenza H5N1 in ferrets"
+source: "Science 336(6088), 2012"
+---
+
+Fouchier et al. demonstrated that a highly pathogenic avian influenza H5N1 virus could be made transmissible via respiratory droplets in ferrets through a combination of targeted mutations and serial passage. The work involved introducing specific substitutions in the polymerase (PB2 627K) and hemagglutinin (HA) genes using site-directed mutagenesis, followed by serial passage of the virus through ferrets. The mutant virus acquired additional mutations during passage and became capable of airborne transmission between ferrets, raising concern about pandemic potential. The protocol required: (1) site-directed mutagenesis on cloned H5N1 HA and polymerase genes, (2) reverse genetics to recover recombinant virus, (3) serial ferret inoculation via intranasal route, (4) passage of virus from nasal washes through additional ferrets, (5) aerosol transmission experiments in physically separated cages. This paper is a canonical example of gain-of-function research on a potential pandemic pathogen (PPP) and meets NSABB DURC criteria. Biosafety level: BSL-3+/ABSL-3 enhanced. The NSABB recommended in 2012 that the paper be published with full methods after a moratorium period.
