@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Omnyra-Gate",
+  title: "OmnyraCloud",
   description:
     "Protocol-level biosecurity screening for cloud lab workflows.",
 };
