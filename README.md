@@ -1,4 +1,4 @@
-# Protocol Screener
+# OmnyraCloud
 
 Protocol-level biosecurity screening for cloud lab workflows.
 
